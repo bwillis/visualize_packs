@@ -54,7 +54,7 @@ module VisualizePacks
 
     all_team_names = all_packages.map { |p| code_owner(p) }.uniq
 
-    file = File.open(File.expand_path File.dirname(__FILE__) + "/graph.dot.erb")
+    file = File.open(File.expand_path File.dirname(__FILE__) + "/graph.#{options.format}.erb")
     templ = file.read.gsub(/^ *(<%.+%>) *$/, '\1')
     template = ERB.new(templ, trim_mode: "<>-")
     template.result(binding)

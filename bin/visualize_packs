@@ -10,6 +10,8 @@ require_relative '../lib/visualize_packs'
 options = Options.new
 
 OptionParser.new do |opt|
+  opt.on('--format', "Format of the output, one of #{OutputFormats.values.map &:serialize}") { |o| options.format = o }
+
   opt.on('--no-legend', "Don't show legend") { |o| options.show_legend = false }
 
   opt.on('--no-dependency-arrows', "Don't show accepted dependency arrows") { |o| options.show_dependencies = false }

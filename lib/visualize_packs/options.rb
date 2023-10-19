@@ -20,8 +20,18 @@ class FocusPackEdgeDirection < T::Enum
   end
 end
 
+class OutputFormats < T::Enum
+  enums do
+    Dot = new('dot')
+    Mermaid = new('mermaid')
+  end
+end
+
+
 class Options < T::Struct
   extend T::Sig
+
+  prop :format, OutputFormats, default: OutputFormats::Dot
 
   prop :show_legend, T::Boolean, default: true
 

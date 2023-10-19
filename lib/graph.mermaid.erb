@@ -1,0 +1,11 @@
+---
+title: <%= title %>
+---
+flowchart TD
+<%- all_packages.each do |package| -%>
+  <%- package.dependencies.each do |to_package| -%>
+    <%- if show_edge.call(package.name, to_package) -%>
+    <%= package.name -%> --> <%= to_package -%>;
+    <%- end -%>
+  <%- end -%>
+<%- end -%>
